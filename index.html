@@ -16,6 +16,26 @@
             return choice[randomIndex];
         }
 
+        function getHumanChoice(){ // This function uses a switch statement to check that the user's input is valid and returns their choice if so.
+            let userInput = prompt('CHOOSE ROCK, PAPER, OR SCISSORS:'); 
+            let capUserInput = userInput.toUpperCase();
+            switch (capUserInput) {
+                case 'ROCK':
+                    return capUserInput;
+                    break;
+                case 'PAPER':
+                    return capUserInput;
+                    break;
+                case 'SCISSORS':
+                    return capUserInput;
+                    break;
+                default:
+                    alert('YOU MUST INPUT A VALID CHOICE')
+                    break;
+            }
+        }
+
+        console.log(getHumanChoice());
         
     </script>   
 </body>
