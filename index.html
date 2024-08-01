@@ -39,7 +39,37 @@
 
         let computerScore = 0; // The initial computer score is set to 0
 
+        function playRound(humanChoice, computerChoice){ // This function uses an else/if statement to figure out the winner of the round
+            if(humanChoice === 'ROCK' && computerChoice === 'SCISSORS'){
+                console.log('YOU WIN! THE COMPUTER CHOSE SCISSORS.');
+                humanScore++;
+            } else if(humanChoice === 'ROCK' && computerChoice === 'PAPER'){
+                console.log('YOU LOSE! THE COMPUTER CHOSE PAPER.');
+                computerScore++;
+            } else if(humanChoice === 'PAPER' && computerChoice === 'ROCK'){
+                console.log('YOU WIN! THE COMPUTER CHOSE ROCK.');
+                humanScore++;
+            } else if(humanChoice === 'PAPER' && computerChoice === 'SCISSORS'){
+                console.log('YOU LOSE! THE COMPUTER CHOSE SCISSORS.');
+                computerScore++;
+            } else if(humanChoice === 'SCISSORS' && computerChoice === 'PAPER'){
+                console.log('YOU WIN! THE COMPUTER CHOSE PAPER.');
+                humanScore++;
+            } else if(humanChoice === 'SCISSORS' && computerChoice === 'ROCK'){
+                console.log('YOU LOSE! THE COMPUTER CHOSE ROCK.');
+                computerScore++;
+            } else {
+                console.log(`IT'S A TIE! THE COMPUTER CHOSE ${computerChoice}.`)
+            }
+        }
         
+        const humanSelection = getHumanChoice(); // Sets the function getHumanChoice to the variable humanSelection
+        
+        const computerSelection = getComputerChoice(); // Sets the function getComputerChoice to the variable computerSelection
+
+        playRound(humanSelection, computerSelection);
+
+
         
     </script>   
 </body>
