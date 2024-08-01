@@ -10,9 +10,9 @@
         
         let choice = ['ROCK', 'PAPER', 'SCISSORS']; // The choices for rock paper scissors
 
-        let randomIndex = Math.floor(Math.random()*3); // Randomly generates a number from 0 - 2
         
         function getComputerChoice(){   // This function chooses a random index from the choice array              
+            let randomIndex = Math.floor(Math.random()*3); // Randomly generates a number from 0 - 2
             return choice[randomIndex];
         }
 
@@ -39,36 +39,47 @@
 
         let computerScore = 0; // The initial computer score is set to 0
 
-        function playRound(humanChoice, computerChoice){ // This function uses an else/if statement to figure out the winner of the round
+        function playGame(){
+            for(let i = 0; i < 5; i++){ // This for loop runs the playRound, getHumanChoice, and getComputerChoice function 5 times
+                let humanSelection = getHumanChoice(); // Sets the function getHumanChoice to the variable humanSelection
+        
+                const computerSelection = getComputerChoice(); // Sets the function getComputerChoice to the variable computerSelection
+                
+                function playRound(humanChoice, computerChoice){ // This function uses an else/if statement to figure out the winner of the round
             if(humanChoice === 'ROCK' && computerChoice === 'SCISSORS'){
-                console.log('YOU WIN! THE COMPUTER CHOSE SCISSORS.');
+                console.log('YOU WIN THE ROUND! THE COMPUTER CHOSE SCISSORS.');
                 humanScore++;
             } else if(humanChoice === 'ROCK' && computerChoice === 'PAPER'){
-                console.log('YOU LOSE! THE COMPUTER CHOSE PAPER.');
+                console.log('YOU LOSE THE ROUND! THE COMPUTER CHOSE PAPER.');
                 computerScore++;
             } else if(humanChoice === 'PAPER' && computerChoice === 'ROCK'){
-                console.log('YOU WIN! THE COMPUTER CHOSE ROCK.');
+                console.log('YOU WIN THE ROUND! THE COMPUTER CHOSE ROCK.');
                 humanScore++;
             } else if(humanChoice === 'PAPER' && computerChoice === 'SCISSORS'){
-                console.log('YOU LOSE! THE COMPUTER CHOSE SCISSORS.');
+                console.log('YOU LOSE THE ROUND! THE COMPUTER CHOSE SCISSORS.');
                 computerScore++;
             } else if(humanChoice === 'SCISSORS' && computerChoice === 'PAPER'){
-                console.log('YOU WIN! THE COMPUTER CHOSE PAPER.');
+                console.log('YOU WIN THE ROUND! THE COMPUTER CHOSE PAPER.');
                 humanScore++;
             } else if(humanChoice === 'SCISSORS' && computerChoice === 'ROCK'){
-                console.log('YOU LOSE! THE COMPUTER CHOSE ROCK.');
+                console.log('YOU LOSE THE ROUND! THE COMPUTER CHOSE ROCK.');
                 computerScore++;
             } else {
                 console.log(`IT'S A TIE! THE COMPUTER CHOSE ${computerChoice}.`)
             }
+            }   playRound(humanSelection, computerSelection);
+            }
+
+            if(humanScore > computerScore){ // Displays the game's winner and total scores after 5 rounds
+                console.log(`YOU WON! HUMAN SCORE: ${humanScore} VS COMPUTER SCORE: ${computerScore}`);
+            } else if(humanScore < computerScore){
+                console.log(`YOU LOST! HUMAN SCORE: ${humanScore} VS COMPUTER SCORE: ${computerScore}`);
+            } else {
+                console.log(`THE GAME IS A TIE! HUMAN SCORE: ${humanScore} VS COMPUTER SCORE: ${computerScore}`);
+            }
         }
-        
-        const humanSelection = getHumanChoice(); // Sets the function getHumanChoice to the variable humanSelection
-        
-        const computerSelection = getComputerChoice(); // Sets the function getComputerChoice to the variable computerSelection
 
-        playRound(humanSelection, computerSelection);
-
+        playGame();
 
         
     </script>   
