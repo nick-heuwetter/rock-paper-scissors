@@ -9,11 +9,11 @@
 <body>
     <div class="container">
         <div class="display-container">
-            <h1 id="main-display">ROCK, PAPER, SCISSORS!</h1>
+            <h1 id="main-display">ROCK, PAPER, SCISSORS! <br> First to five wins!</h1>
             <h2>Human: <label id="h-score">0</label></h2>
             <h2>Computer: <label id="c-score">0</label></h2>
         </div>
-        <div class="button-container">
+        <div id="buttonDiv" class="button-container">
             <button id="rock">ROCK</button>
             <button id="paper">PAPER</button>
             <button id="scissors">SCISSORS</button>
@@ -30,9 +30,10 @@
         const humanScoreDisplay = document.querySelector('#h-score');
         const computerScoreDisplay = document.querySelector('#c-score');
         const mainDisplay = document.querySelector('#main-display');
+        const buttonDiv = document.querySelector('#buttonDiv')
         const restartBtn = document.createElement('button');
 
-        restartBtn.textContent = 'Restart'
+        restartBtn.textContent = 'Restart';
         
         let choice = ['ROCK', 'PAPER', 'SCISSORS']; 
         
@@ -80,17 +81,32 @@
                 rockBtn.remove();
                 paperBtn.remove();
                 scissorsBtn.remove();
+                buttonDiv.appendChild(restartBtn);
             } else if (computerScore >= 5){
                 mainDisplay.textContent = 'You lost the game!';
                 rockBtn.remove();
                 paperBtn.remove();
                 scissorsBtn.remove();
+                buttonDiv.appendChild(restartBtn);
             }
         };
+
+        function restart(){
+            humanScore = 0;
+            computerScore = 0;
+            humanScoreDisplay.textContent = 0;
+            computerScoreDisplay.textContent = 0;
+            mainDisplay.innerHTML = 'ROCK, PAPER, SCISSORS! <br> First to five wins!';
+            restartBtn.remove();
+            buttonDiv.appendChild(rockBtn);
+            buttonDiv.appendChild(paperBtn);
+            buttonDiv.appendChild(scissorsBtn);
+        }
         
         rockBtn.addEventListener('click', () => playRound('ROCK'));
         paperBtn.addEventListener('click', () => playRound('PAPER'));
         scissorsBtn.addEventListener('click', () => playRound('SCISSORS'));
+        restartBtn.addEventListener('click', restart);
 
         
     </script>   
