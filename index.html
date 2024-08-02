@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <div class="display-container">
-            <h1 id="main-display">ROCK, PAPER, SCISSORS! <br> First to five wins!</h1>
+            <h1 id="main-display">ROCK, PAPER, SCISSORS!</h1>
             <h2>Human: <label id="h-score">0</label></h2>
             <h2>Computer: <label id="c-score">0</label></h2>
         </div>
@@ -77,13 +77,13 @@
             }
 
             if(humanScore >= 5){
-                mainDisplay.textContent = 'You won the game!';
+                mainDisplay.textContent = 'You reached 5 points! You won the game!';
                 rockBtn.remove();
                 paperBtn.remove();
                 scissorsBtn.remove();
                 buttonDiv.appendChild(restartBtn);
             } else if (computerScore >= 5){
-                mainDisplay.textContent = 'You lost the game!';
+                mainDisplay.textContent = 'You lost the game! The computer reached 5 points!';
                 rockBtn.remove();
                 paperBtn.remove();
                 scissorsBtn.remove();
@@ -96,7 +96,7 @@
             computerScore = 0;
             humanScoreDisplay.textContent = 0;
             computerScoreDisplay.textContent = 0;
-            mainDisplay.innerHTML = 'ROCK, PAPER, SCISSORS! <br> First to five wins!';
+            mainDisplay.textContent = 'ROCK, PAPER, SCISSORS!';
             restartBtn.remove();
             buttonDiv.appendChild(rockBtn);
             buttonDiv.appendChild(paperBtn);
