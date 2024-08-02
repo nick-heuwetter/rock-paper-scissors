@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper, Scissors</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="display">
-        <h1>SCORE</h1>
-        <h2 class="h-score">Human: </h2>
-        <h2 class="c-score">Computer: </h2>
+        <h1>ROCK, PAPER, SCISSORS!</h1>
+        <h2>Human: <label id="h-score">0</label></h2>
+        <h2>Computer: <label id="c-score">0</label></h2>
     </div>
     <button id="rock">ROCK</button>
     <button id="paper">PAPER</button>
@@ -22,20 +23,16 @@
         const rockBtn = document.querySelector('#rock');
         const paperBtn = document.querySelector('#paper');
         const scissorsBtn = document.querySelector('#scissors');
-        const button = document.querySelector('button');
-
-        
-        
+        const humanScoreDisplay = document.querySelector('#h-score');
+        const computerScoreDisplay = document.querySelector('#c-score');
         
         let choice = ['ROCK', 'PAPER', 'SCISSORS']; 
-
         
         function getComputerChoice(){                 
             let randomIndex = Math.floor(Math.random()*3); 
             return choice[randomIndex];
         }
         
-
         let humanScore = 0;
 
         let computerScore = 0; 
@@ -43,25 +40,31 @@
         function playRound(humanChoice){
             const computerChoice = getComputerChoice();
             if(humanChoice === computerChoice){
-                console.log(`It\'s a tie! You chose ${humanChoice}. The computer chose ${computerChoice}`);
+                console.log(`It\'s a tie! You chose ${humanChoice}! The computer chose ${computerChoice}!`);
             } else if (humanChoice === 'ROCK' && computerChoice === 'SCISSORS'){
                 console.log(`You won! You chose ROCK! The computer chose SCISSORS!`);
                 humanScore++;
+                humanScoreDisplay.textContent = humanScore;
             } else if (humanChoice === 'ROCK' && computerChoice === 'PAPER'){
                 console.log(`You lose! You chose ROCK! The computer chose PAPER!`);
                 computerScore++;
+                computerScoreDisplay.textContent = computerScore;
             } else if (humanChoice === 'PAPER' && computerChoice === 'ROCK'){
                 console.log('You won! You chose PAPER! The computer chose ROCK!');
                 humanScore++;
+                humanScoreDisplay.textContent = humanScore;
             } else if (humanChoice === 'PAPER' && computerChoice === 'SCISSORS'){
                 console.log('You lost! You chose PAPER! The computer chose SCISSORS!');
                 computerScore++;
+                computerScoreDisplay.textContent = computerScore;
             } else if (humanChoice === 'SCISSORS' && computerChoice === 'PAPER'){
                 console.log('You won! You chose SCISSORS! The computer chose PAPER!');
                 humanScore++;
+                humanScoreDisplay.textContent = humanScore;
             } else {
                 console.log('You lost! You chose SCISSORS! The computer chose ROCK!');
                 computerScore++;
+                computerScoreDisplay.textContent = computerScore;
             }
         };
         
